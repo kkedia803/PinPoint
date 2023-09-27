@@ -17,7 +17,7 @@ export default function Login({setShowLogin, myStorage, setCurrentUser}) {
             passwordRef: passwordRef.current.value
         }
         try {
-            const res = await axios.post("/user/login", user);
+            const res = await axios.post("https://pinpoint.onrender.com/user/login", user);
             myStorage.setItem("user",res.data.username);
             setCurrentUser(res.data.username)
             setShowLogin(false);
