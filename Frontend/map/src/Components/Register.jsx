@@ -20,7 +20,7 @@ export default function Register({setShowRegister}) {
             passwordRef: passwordRef.current.value
         }
         try {
-            await axios.post("https://pinpoint.onrender.com/user/register", newUser)
+            await axios.post(`${process.env.REACT_APP_URL}/user/register`, newUser)
             setSuccess(true);
             setError(false);
         } catch (err) {

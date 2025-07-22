@@ -30,7 +30,8 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const res = await axios.get("https://pinpoint.onrender.com/pin");
+        console.log('url', process.env.REACT_APP_URL)
+        const res = await axios.get(`${process.env.REACT_APP_URL}/pin`);
         setPins(res.data)
       } catch (err) {
         console.log(err);
