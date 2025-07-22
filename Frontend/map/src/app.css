@@ -1,106 +1,637 @@
-
 .card {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.mapboxgl-popup-close-button{
+  font-size: 2rem;
+  color:white;
+}
+
+label {
+  width: max-content;
+  color: tomato;
+  font-size: 13px;
+  border-bottom: 0.5px solid tomato;
+  margin: 3px 0;
+  font-weight: 500;
+}
+
+.desc {
+  font-size: 14px;
+}
+
+.star {
+  color: gold;
+  display: flex;
+}
+
+.username {
+  font-size: 14px;
+}
+
+.date {
+  font-size: 12px;
+}
+
+form {
+  /* width: 250px; */
+  /* height: 250px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgb(88, 87, 87);
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid gray;
+  transition: border-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+  color: rgb(185, 184, 184);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-bottom-color: tomato;
+}
+
+textarea {
+  border: none;
+  border-bottom: 1px solid gray;
+  resize: vertical;
+  min-height: 60px;
+  transition: border-color 0.3s ease;
+}
+
+.submitButton {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: tomato;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #ff4500;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 99, 71, 0.3);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submitButton.submitting {
+  background-color: #ccc;
+}
+
+.buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.button {
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.logout {
+  background-color: tomato;
+}
+
+.login {
+  background-color: teal;
+  margin-right: 10px;
+}
+
+.register {
+  background-color: slateblue;
+}
+
+.logout {
+  z-index: 1;
+}
+
+.profile {
+  text-decoration: none;
+  background-color: green;
+  z-index: 1;
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+.dashboarddiv {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: right;
+}
+
+/* Enhanced Pin Form Styles */
+.pin-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-icon {
+  font-size: 30px;
+  color: tomato;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.pin-icon:hover {
+  transform: scale(1.1);
+  color: #ff4500;
+}
+
+.pin-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: tomato;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+.custom-popup .mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: none;
+  overflow: hidden;
+}
+
+.pin-form-container {
+  width: 320px;
+  background: white;
+}
+
+.form-header {
+  background: linear-gradient(135deg, tomato, #ff6347);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.form-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.form-header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.enhanced-form {
+  padding: 24px;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(88, 87, 87);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  border: none;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: tomato;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+  background-color: #fdf2f2;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Star Rating Styles */
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.2s ease;
+}
+
+.star-button:hover {
+  transform: scale(1.1);
+}
+
+.star-filled {
+  color: #ffd700;
+  font-size: 20px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+.star-empty {
+  color: #ddd;
+  font-size: 20px;
+}
+
+.rating-text {
+  font-size: 12px;
+  color: #666;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* Pin Marker Styles */
+.pin-marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-marker {
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+  z-index: 2;
+}
+
+.pin-marker:hover {
+  transform: scale(1.15) translateY(-2px);
+}
+
+.pin-marker.own-pin {
+  color: tomato;
+}
+
+.pin-marker.other-pin {
+  color: slateblue;
+}
+
+.pin-shadow {
+  position: absolute;
+  bottom: -8px;
+  width: 12px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Pin Popup Styles */
+.pin-popup .mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border: none;
+  overflow: hidden;
+  max-width: 320px;
+}
+
+.pin-card {
+  background: white;
+  width: auto;
+}
+
+.pin-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.location-icon {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-icon svg {
+  font-size: 20px;
+}
+
+.pin-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.pin-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.section-icon {
+  color: #667eea;
+  font-size: 16px;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.pin-description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-filled-display {
+  color: #ffd700;
+  font-size: 16px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.star-empty-display {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.rating-number {
+  font-size: 12px;
+  color: #666;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.user-info,
+.date-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-icon {
+  color: #999;
+  font-size: 14px;
+}
+
+.info-text {
+  font-size: 13px;
+  color: #666;
+}
+
+.info-text strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Pin Form Input Styles */
+.pin-input,
+.pin-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.pin-textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.4;
+}
+
+.pin-input:focus,
+.pin-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.pin-input.error,
+.pin-textarea.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.pin-input::placeholder,
+.pin-textarea::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Submit Button in Pin Card */
+.pin-submit-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.pin-submit-button:hover:not(:disabled) {
+  background: #5a4fcf;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.pin-submit-button:active {
+  transform: translateY(0);
+}
+
+.pin-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pin-submit-button.submitting {
+  background: #ccc;
+}
+
+/* Star Rating in Form */
+.rating-display .star-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.2s ease;
+}
+
+.rating-display .star-button:hover {
+  transform: scale(1.1);
+}
+
+/* Spinner */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments for form */
+@media (max-width: 480px) {
+  .pin-input,
+  .pin-textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .pin-card {
+    width: 280px;
   }
   
-  label {
-    width: max-content;
-    color: tomato;
-    font-size: 13px;
-    border-bottom: 0.5px solid tomato;
-    margin: 3px 0;
+  .pin-card-content {
+    padding: 16px;
   }
   
-  .desc {
-    font-size: 14px;
+  .pin-card-header {
+    padding: 16px;
   }
   
-  .star {
-    color: gold;
-    display: flex;
+  .pin-title {
+    font-size: 16px;
   }
-  
-  .username {
-    font-size: 14px;
-  }
-  
-  .date {
-    font-size: 12px;
-  }
-  
-  form {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: rgb(88, 87, 87);
-  }
-  
-  input {
-    border: none;
-    border-bottom: 1px solid gray;
-  }
-  
-  input::placeholder,
-  textarea::placeholder {
-    font-size: 12px;
-    color: rgb(185, 184, 184);
-  }
-  
-  input:focus,
-  textarea:focus,
-  select:focus {
-    outline: none;
-  }
-  
-  textarea {
-    border: none;
-    border-bottom: 1px solid gray;
-  }
-  
-  .submitButton {
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    background-color: tomato;
-    cursor: pointer;
-  }
-  
-  .buttons,
-  .logout {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .button {
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  .button:focus{
-    outline: none;
-  }
-  
-  .logout{
-    background-color: tomato;
-  }
-  
-  .login{
-    background-color: teal;
-    margin-right: 10px;
-  }
-  
-  .register{
-    background-color: slateblue;
-  }
+}
+

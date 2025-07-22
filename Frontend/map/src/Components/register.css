@@ -56,3 +56,404 @@
     color: red;
     text-align: center;
 }
+
+/* Register Overlay */
+.register-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Register Container */
+.register-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  margin: 16px;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.close-button:hover {
+  background: #f5f5f5;
+  color: slateblue;
+}
+
+.close-button svg {
+  font-size: 18px;
+}
+
+/* Header */
+.register-header {
+  padding: 32px 24px 24px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.logo-icon {
+  font-size: 24px;
+  color: slateblue;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.register-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+/* Form */
+.register-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #999;
+  font-size: 16px;
+  z-index: 1;
+  transition: color 0.2s ease;
+}
+
+.register-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.register-input:focus {
+  outline: none;
+  border-color: slateblue;
+  box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.1);
+}
+
+.register-input:focus + .input-icon,
+.input-wrapper:focus-within .input-icon {
+  color: slateblue;
+}
+
+.register-input::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+/* Success Message */
+.success-message {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #0369a1;
+  font-size: 13px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Error Message */
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #dc2626;
+  font-size: 13px;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Register Button */
+.register-button {
+  background: slateblue;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.register-button:hover:not(:disabled) {
+  background: #5a4fcf;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.register-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.register-button.loading {
+  background: #ccc;
+}
+
+/* Spinner */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Legacy classes for backward compatibility */
+.registerContainer {
+    width: 300px;
+    height: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.registerCancel {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+}
+
+.logoregister {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: slateblue;
+    font-weight: 700;
+}
+
+.registerBtn {
+    border: none;
+    padding: 5px;
+    background-color: slateblue;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.success {
+    font-size: 15px;
+    font-weight: 500;
+    color: green;
+    text-align: center;
+}
+
+.failure {
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-container {
+    max-width: 320px;
+    margin: 12px;
+  }
+  
+  .register-header {
+    padding: 24px 20px 20px;
+  }
+  
+  .logo-text {
+    font-size: 22px;
+  }
+  
+  .register-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    max-width: 300px;
+    margin: 8px;
+    border-radius: 6px;
+  }
+  
+  .register-header {
+    padding: 20px 16px 16px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .register-form {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .register-input {
+    padding: 10px 10px 10px 36px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .input-icon {
+    left: 10px;
+    font-size: 14px;
+  }
+  
+  .close-button {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 320px) {
+  .register-container {
+    max-width: 280px;
+  }
+  
+  .register-header {
+    padding: 16px 12px 12px;
+  }
+  
+  .register-form {
+    padding: 12px;
+  }
+}
+
+/* Focus and accessibility improvements */
+.register-button:focus,
+.close-button:focus,
+.register-input:focus {
+  outline: 2px solid slateblue;
+  outline-offset: 2px;
+}
+
+/* Remove excessive transitions */
+.close-button,
+.register-input,
+.input-icon,
+.register-button {
+  transition: all 0.2s ease;
+}
