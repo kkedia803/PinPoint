@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { PiMapPinFill } from 'react-icons/pi'
+
+// import mapboxgl from 'mapbox-gl';
+// import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker'; 
+// mapboxgl.workerClass = MapboxWorker;
+
 import Map, { Marker, Popup } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css'
+// import 'mapbox-gl/dist/mapbox-gl.css'
 import StarIcon from '@mui/icons-material/Star';
 import './app.css'
 import axios from "axios"
 import { useState, useEffect } from 'react';
-import { format } from 'timeago.js';
+// import { format } from 'timeago.js';
 import Register from './Components/Register';
 import Login from './Components/Login';
 
@@ -137,7 +142,7 @@ function App() {
                       </div>
                       <label>Information</label>
                       <span className='username'>Created By <b>{p.username}</b></span>
-                      <span className='date'>{format(p.createdAt)}</span>
+                      {/* <span className='date'>{format(p.createdAt)}</span> */}
                     </div>
                   </Popup>
                 )}
