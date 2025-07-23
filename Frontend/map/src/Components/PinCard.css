@@ -1,0 +1,260 @@
+.pin-card {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.pin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Grid View */
+.pin-card.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.pin-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.pin-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.pin-card:hover .pin-image img {
+  transform: scale(1.05);
+}
+
+.pin-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.pin-actions.visible {
+  opacity: 1;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.action-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.action-btn.edit {
+  color: #3b82f6;
+}
+
+.action-btn.share {
+  color: #10b981;
+}
+
+.action-btn.delete {
+  color: #ef4444;
+}
+
+.action-btn.edit:hover {
+  background: #eff6ff;
+}
+
+.action-btn.share:hover {
+  background: #ecfdf5;
+}
+
+.action-btn.delete:hover {
+  background: #fef2f2;
+}
+
+/* List View */
+.pin-card.list {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.pin-image-list {
+  width: 80px;
+  height: 80px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pin-image-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.pin-card.list .pin-content {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pin-info {
+  flex: 1;
+}
+
+.pin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.pin-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+}
+
+.pin-category {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pin-description {
+  margin: 0 0 0.75rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pin-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.pin-location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pin-actions-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pin-card.list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pin-card.list .pin-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .pin-image-list {
+    width: 100%;
+    height: 120px;
+  }
+
+  .pin-actions-list {
+    justify-content: center;
+  }
+
+  .pin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .pin-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pin-actions {
+    position: static;
+    opacity: 1;
+    justify-content: center;
+    margin-top: 0.5rem;
+    background: rgba(248, 250, 252, 0.9);
+    padding: 0.5rem;
+  }
+
+  .pin-content {
+    padding: 0.75rem;
+  }
+
+  .pin-title {
+    font-size: 1rem;
+  }
+
+  .pin-description {
+    font-size: 0.85rem;
+  }
+}
+
+
+.datadiv {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 4px;
+  font-size: 1.1rem;
+}
+
+.headingDiv {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 4px;
+  font-size: 1.5rem;
+}
