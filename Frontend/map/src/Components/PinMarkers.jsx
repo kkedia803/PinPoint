@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import { PiMapPinFill } from 'react-icons/pi';
 import {
@@ -25,21 +25,30 @@ const PinMarkers = ({
                         )}
                     </span>
                 ))}
-                <span className="rating-number">({rating}/5)</span>
             </div>
         );
     };
+
+    useEffect(() => {
+        if (selectedPin) {
+            console.log('selected pin', selectedPin);
+            console.log('selected pin lat', selectedPin.lat);
+            console.log('selected pin long', selectedPin.long);
+            console.log('selected pin id', selectedPin._id);
+        }
+    }, [selectedPin])
 
     return (
         <>
             {pins.map(p => {
                 if (!currentUser || p.username === currentUser) {
                     return (
+
                         <div key={p._id || `${p.lat}-${p.long}`}>
                             <Marker longitude={p.long} latitude={p.lat}>
                                 <div
                                     className="pin-marker-container"
-                                    onClick={() => setSelectedPin(p)}
+                                    onClick={(e) => { e.stopPropagation(); setSelectedPin(p) }}
                                     style={{ cursor: 'pointer' }}
                                 >
                                     <PiMapPinFill
@@ -48,65 +57,57 @@ const PinMarkers = ({
                                     <div className="pin-shadow"></div>
                                 </div>
                             </Marker>
-
-                            {/* {console.log(selectedPin)} */}
-                            {console.log("Selected Pin:", selectedPin, "Current Pin:", p)}
-                            {selectedPin &&  (
-                                <Popup
-                                    longitude={p.long}
-                                    latitude={p.lat}
-                                    anchor='left'
-                                    onClose={() => setSelectedPin(null)}
-                                    className="pin-popup"
-                                >
-                                    <div className='pin-card'>
-                                        <div className="pin-card-header">
-                                            <div className="location-icon">
-                                                <MdLocationOn />
-                                            </div>
-                                            <h3 className='pin-title'>{p.title}</h3>
-                                        </div>
-
-                                        <div className="pin-card-content">
-                                            <div className="review-section">
-                                                <div className="section-header">
-                                                    <MdRateReview className="section-icon" />
-                                                    <span className="section-label">Review</span>
-                                                </div>
-                                                <p className='pin-description'>{p.desc}</p>
-                                            </div>
-
-                                            <div className="rating-section">
-                                                <div className="section-header">
-                                                    <MdStar className="section-icon" />
-                                                    <span className="section-label">Rating</span>
-                                                </div>
-                                                {renderStars(p.rating)}
-                                            </div>
-
-                                            <div className="info-section">
-                                                <div className="user-info">
-                                                    <MdPerson className="info-icon" />
-                                                    <span className="info-text">
-                                                        Created by <strong>{p.username}</strong>
-                                                    </span>
-                                                </div>
-                                                {/* Uncomment when date formatting is available */}
-                                                {/* <div className="date-info">
-                                                    <MdCalendarToday className="info-icon" />
-                                                    <span className="info-text">
-                                                        {format(p.createdAt)}
-                                                    </span>
-                                                </div> */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Popup>
-                            )}
                         </div>
+
                     )
                 }
             })}
+
+            {selectedPin && (
+                <Popup
+                    longitude={selectedPin.long}
+                    latitude={selectedPin.lat}
+                    anchor="left"
+                    onClose={() => setSelectedPin(null)}
+                    className="pin-popup"
+                >
+                    <div className="pin-card">
+                        <div className="pin-card-header">
+                            <div className="location-icon">
+                                <MdLocationOn />
+                            </div>
+                            <h3 className="pin-title">{selectedPin.title}</h3>
+                        </div>
+
+                        <div className="pin-card-content">
+                            <div className="review-section">
+                                <div className="section-header">
+                                    <MdRateReview className="section-icon" />
+                                    <span className="section-label">Review</span>
+                                </div>
+                                <p className="pin-description">{selectedPin.desc}</p>
+                            </div>
+
+                            <div className="rating-section">
+                                <div className="section-header">
+                                    <MdStar className="section-icon" />
+                                    <span className="section-label">Rating</span>
+                                </div>
+                                {renderStars(selectedPin.rating)}
+                            </div>
+
+                            <div className="info-section">
+                                <div className="user-info">
+                                    <MdPerson className="info-icon" />
+                                    <span className="info-text">
+                                        Created by <strong>{selectedPin.username}</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Popup>
+            )}
         </>
     )
 }
