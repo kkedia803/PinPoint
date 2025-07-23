@@ -72,7 +72,7 @@ const PinMarkers = ({
                     className="pin-popup"
                 >
                     <div className="pin-card">
-                        <div className="pin-card-header">
+                        <div className={`${selectedPin.username === currentUser ?'pin-card-header2':'pin-card-header'}`}>
                             <div className="location-icon">
                                 <MdLocationOn />
                             </div>

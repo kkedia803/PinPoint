@@ -7,9 +7,9 @@
 }
 
 
-.mapboxgl-popup-close-button{
+.mapboxgl-popup-close-button {
   font-size: 2rem;
-  color:white;
+  color: white;
 }
 
 label {
@@ -193,10 +193,12 @@ textarea {
     transform: scale(0.8);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.2);
     opacity: 0.3;
   }
+
   100% {
     transform: scale(0.8);
     opacity: 0.6;
@@ -385,6 +387,15 @@ textarea {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: white;
+}
+
+.pin-card-header2 {
+  background: linear-gradient(135deg, #e49351 0%, #c25c09 100%);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;  
   color: white;
 }
 
@@ -604,15 +615,22 @@ textarea {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive adjustments for form */
 @media (max-width: 480px) {
+
   .pin-input,
   .pin-textarea {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
+    /* Prevents zoom on iOS */
   }
 }
 
@@ -621,17 +639,27 @@ textarea {
   .pin-card {
     width: 280px;
   }
-  
+
   .pin-card-content {
     padding: 16px;
   }
-  
+
   .pin-card-header {
     padding: 16px;
   }
-  
+
   .pin-title {
     font-size: 16px;
   }
 }
 
+.logodiv {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+}
+
+.logo{
+  height: 8rem;
+  width: 8rem;
+}
